@@ -58,6 +58,66 @@
     <Compile Include="DataMaster.Designer.cs">
       <DependentUpon>DataMaster.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataRelasi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataRelasi.Designer.cs">
+      <DependentUpon>DataRelasi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Penanaman.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Penanaman.Designer.cs">
+      <DependentUpon>Penanaman.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Penyuplaian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Penyuplaian.Designer.cs">
+      <DependentUpon>Penyuplaian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pelayanan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pelayanan.Designer.cs">
+      <DependentUpon>Pelayanan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pengiriman.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pengiriman.Designer.cs">
+      <DependentUpon>Pengiriman.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pangan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pangan.Designer.cs">
+      <DependentUpon>Pangan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kurir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kurir.Designer.cs">
+      <DependentUpon>Kurir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pengepul.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pengepul.Designer.cs">
+      <DependentUpon>Pengepul.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedagang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedagang.Designer.cs">
+      <DependentUpon>Pedagang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Petani.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Petani.Designer.cs">
+      <DependentUpon>Petani.cs</DependentUpon>
+    </Compile>
     <Compile Include="HalamanUtama.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +131,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataMaster.resx">
       <DependentUpon>DataMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataRelasi.resx">
+      <DependentUpon>DataRelasi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kurir.resx">
+      <DependentUpon>Kurir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pangan.resx">
+      <DependentUpon>Pangan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedagang.resx">
+      <DependentUpon>Pedagang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pelayanan.resx">
+      <DependentUpon>Pelayanan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Penanaman.resx">
+      <DependentUpon>Penanaman.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pengepul.resx">
+      <DependentUpon>Pengepul.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pengiriman.resx">
+      <DependentUpon>Pengiriman.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Penyuplaian.resx">
+      <DependentUpon>Penyuplaian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Petani.resx">
+      <DependentUpon>Petani.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HalamanUtama.resx">
       <DependentUpon>HalamanUtama.cs</DependentUpon>
@@ -99,19 +189,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\admin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pngwing.com.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\coba3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Pangan.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Kurir.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

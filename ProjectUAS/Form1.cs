@@ -21,5 +21,12 @@ namespace ProjectUAS
         {
 
         }
+
+        private void btnlogin_Click(object sender, EventArgs e)
+        {
+            HalamanUtama hu = new HalamanUtama();
+            hu.Show();
+            this.Hide();
+        }
     }
 }
