@@ -32,13 +32,15 @@ namespace ProjectUAS
             alp.Enabled = false;
             nop.Text = "";
             nop.Enabled = false;
+            stok.Text = "";
+            stok.Enabled = false;
             btnSave.Enabled = false;
             btnClear.Enabled = false;
         }
         private void dataGridView()
         {
             koneksi.Open();
-            string str = "select Id_Pedagang, Nama_Pedagang, Alamat, No_HP from dbo.Pedagang";
+            string str = "select Id_Pedagang, Nama_Pedagang, Alamat, No_HP, Stok_Penjualan from dbo.Pedagang";
             SqlDataAdapter da = new SqlDataAdapter(str, koneksi);
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -98,6 +100,7 @@ namespace ProjectUAS
             nmp.Enabled = true;
             alp.Enabled = true;
             nop.Enabled = true;
+            stok.Enabled = true;
             btnSave.Enabled = true;
             btnClear.Enabled = true;
         }
@@ -108,6 +111,7 @@ namespace ProjectUAS
             string nmPedagang = nmp.Text;
             string alPedagang = alp.Text;
             string noPedagang = nop.Text;
+            string stokPenjualan = stok.Text;
             if (idPedagang == "")
             {
                 MessageBox.Show("Masukkan Id Pedagang", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -127,12 +131,13 @@ namespace ProjectUAS
             else
             {
                 koneksi.Open();
-                string str = "Insert Into Pedagang (Id_Pedagang, Nama_Pedagang, Alamat, No_HP) values (@idp, @nmp, @alp, @nop)";
+                string str = "Insert Into Pedagang (Id_Pedagang, Nama_Pedagang, Alamat, No_HP, Stok_Penjualan) values (@idp, @nmp, @alp, @nop, @stk)";
                 SqlCommand cmd = new SqlCommand(str, koneksi);
                 cmd.Parameters.Add(new SqlParameter("@idp", idPedagang));
                 cmd.Parameters.Add(new SqlParameter("@nmp", nmPedagang));
                 cmd.Parameters.Add(new SqlParameter("@alp", alPedagang));
                 cmd.Parameters.Add(new SqlParameter("@nop", noPedagang));
+                cmd.Parameters.Add(new SqlParameter("@stk", stokPenjualan));
                 cmd.ExecuteNonQuery();
 
                 koneksi.Close();

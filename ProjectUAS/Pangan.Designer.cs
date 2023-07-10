@@ -231,6 +231,11 @@
             // cbxjp
             // 
             this.cbxjp.FormattingEnabled = true;
+            this.cbxjp.Items.AddRange(new object[] {
+            "Beras",
+            "Kacang",
+            "Jagung",
+            "Sayur"});
             this.cbxjp.Location = new System.Drawing.Point(440, 339);
             this.cbxjp.Name = "cbxjp";
             this.cbxjp.Size = new System.Drawing.Size(216, 24);

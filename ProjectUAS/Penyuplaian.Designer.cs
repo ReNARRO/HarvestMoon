@@ -39,10 +39,28 @@
             this.btnPenanaman = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dtptanggal2 = new System.Windows.Forms.DateTimePicker();
+            this.idp2 = new System.Windows.Forms.TextBox();
+            this.dtptanggal1 = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.idp1 = new System.Windows.Forms.TextBox();
+            this.brt = new System.Windows.Forms.TextBox();
+            this.nop = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -195,11 +213,175 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // btnOpen
+            // 
+            this.btnOpen.Location = new System.Drawing.Point(773, 95);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(89, 29);
+            this.btnOpen.TabIndex = 83;
+            this.btnOpen.Text = "Open";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(260, 95);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(488, 189);
+            this.dataGridView1.TabIndex = 82;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(257, 427);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(134, 16);
+            this.label7.TabIndex = 113;
+            this.label7.Text = "Tanggal Penerimaan";
+            // 
+            // dtptanggal2
+            // 
+            this.dtptanggal2.Location = new System.Drawing.Point(414, 427);
+            this.dtptanggal2.Name = "dtptanggal2";
+            this.dtptanggal2.Size = new System.Drawing.Size(216, 22);
+            this.dtptanggal2.TabIndex = 112;
+            // 
+            // idp2
+            // 
+            this.idp2.Location = new System.Drawing.Point(413, 504);
+            this.idp2.Name = "idp2";
+            this.idp2.Size = new System.Drawing.Size(216, 22);
+            this.idp2.TabIndex = 111;
+            // 
+            // dtptanggal1
+            // 
+            this.dtptanggal1.Location = new System.Drawing.Point(413, 358);
+            this.dtptanggal1.Name = "dtptanggal1";
+            this.dtptanggal1.Size = new System.Drawing.Size(216, 22);
+            this.dtptanggal1.TabIndex = 110;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(257, 507);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 16);
+            this.label2.TabIndex = 109;
+            this.label2.Text = "Id Pengepul";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(540, 547);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(89, 29);
+            this.btnClear.TabIndex = 108;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(413, 547);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(89, 29);
+            this.btnSave.TabIndex = 107;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(659, 314);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(89, 29);
+            this.btnAdd.TabIndex = 106;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // idp1
+            // 
+            this.idp1.Location = new System.Drawing.Point(413, 467);
+            this.idp1.Name = "idp1";
+            this.idp1.Size = new System.Drawing.Size(216, 22);
+            this.idp1.TabIndex = 105;
+            // 
+            // brt
+            // 
+            this.brt.Location = new System.Drawing.Point(413, 392);
+            this.brt.Name = "brt";
+            this.brt.Size = new System.Drawing.Size(216, 22);
+            this.brt.TabIndex = 104;
+            // 
+            // nop
+            // 
+            this.nop.Location = new System.Drawing.Point(413, 317);
+            this.nop.Name = "nop";
+            this.nop.Size = new System.Drawing.Size(216, 22);
+            this.nop.TabIndex = 103;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(257, 470);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 16);
+            this.label4.TabIndex = 102;
+            this.label4.Text = "Id Petani";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(257, 392);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 16);
+            this.label3.TabIndex = 101;
+            this.label3.Text = "Berat Suplai";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(257, 363);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 16);
+            this.label5.TabIndex = 100;
+            this.label5.Text = "Tanggal Menyuplai";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(257, 320);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 16);
+            this.label6.TabIndex = 99;
+            this.label6.Text = "No Penyuplaian";
+            // 
             // Penyuplaian
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 599);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.dtptanggal2);
+            this.Controls.Add(this.idp2);
+            this.Controls.Add(this.dtptanggal1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.idp1);
+            this.Controls.Add(this.brt);
+            this.Controls.Add(this.nop);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnOpen);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMenu);
             this.Name = "Penyuplaian";
@@ -209,7 +391,9 @@
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -225,5 +409,22 @@
         private System.Windows.Forms.Button btnPenanaman;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dtptanggal2;
+        private System.Windows.Forms.TextBox idp2;
+        private System.Windows.Forms.DateTimePicker dtptanggal1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox idp1;
+        private System.Windows.Forms.TextBox brt;
+        private System.Windows.Forms.TextBox nop;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

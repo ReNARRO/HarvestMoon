@@ -53,6 +53,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnOpen = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.stok = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -232,7 +234,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(584, 503);
+            this.btnClear.Location = new System.Drawing.Point(584, 547);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(89, 29);
             this.btnClear.TabIndex = 38;
@@ -242,7 +244,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(457, 503);
+            this.btnSave.Location = new System.Drawing.Point(457, 547);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(89, 29);
             this.btnSave.TabIndex = 37;
@@ -345,11 +347,29 @@
             this.dataGridView1.Size = new System.Drawing.Size(488, 189);
             this.dataGridView1.TabIndex = 26;
             // 
+            // stok
+            // 
+            this.stok.Location = new System.Drawing.Point(457, 486);
+            this.stok.Name = "stok";
+            this.stok.Size = new System.Drawing.Size(216, 22);
+            this.stok.TabIndex = 39;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(301, 489);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 16);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "Stok Penjualan";
+            // 
             // Pedagang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 599);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.stok);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAdd);
@@ -404,5 +424,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox stok;
+        private System.Windows.Forms.Label label2;
     }
 }

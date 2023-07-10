@@ -7,14 +7,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+using System.Data.SqlClient;
 
 namespace ProjectUAS
 {
     public partial class Pelayanan : Form
     {
+        private string stringconnection = "data source = LAPTOP-N8UQTM32\\RENARRO_23;database=ProjectUAS;User ID = sa; Password = dewobroto123";
+        private SqlConnection koneksi;
+
         public Pelayanan()
         {
             InitializeComponent();
+            koneksi = new SqlConnection(stringconnection);
+            refreshform();
+        }
+        private void refreshform()
+        {
+            nop.Text = "";
+            nop.Enabled = false;
+            dtptanggal1.Enabled = false;
+            brt.Text = "";
+            brt.Enabled = false;
+            idp1.Text = "";
+            idp1.Enabled = false;
+            idp2.Text = "";
+            idp2.Enabled = false;
+            btnSave.Enabled = false;
+            btnClear.Enabled = false;
+        }
+        private void dataGridView()
+        {
+            koneksi.Open();
+            string str = "select No_Transaksi, Tgl_pengiriman, Berat_Pengiriman, Id_Pengepul, Id_Kurir from dbo.Rekap_Pelayanan";
+            SqlDataAdapter da = new SqlDataAdapter(str, koneksi);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
+            koneksi.Close();
         }
 
         private void btnPenanaman_Click(object sender, EventArgs e)
@@ -50,6 +81,63 @@ namespace ProjectUAS
             DataRelasi dr = new DataRelasi();
             dr.Show();
             this.Hide();
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            dataGridView();
+            btnOpen.Enabled = false;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            nop.Enabled = true;
+            dtptanggal1.Enabled = true;
+            brt.Enabled = true;
+            idp1.Enabled = true;
+            idp2.Enabled = true;
+            btnSave.Enabled = true;
+            btnClear.Enabled = true;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            string noTransaksi = nop.Text;
+            string tglpengiriman = dtptanggal1.Text;
+            string brtPengiriman = brt.Text;
+            string idPengepul = idp1.Text;
+            string idKurir = idp2.Text;
+            if (noTransaksi == "")
+            {
+                MessageBox.Show("Masukkan No Penanaman", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            if (tglpengiriman == "")
+            {
+                MessageBox.Show("Masukkan Tanggal Tanam", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            else
+            {
+                koneksi.Open();
+                string str = "Insert Into Rekap_Pelayanan ( No_Transaksi, Tgl_pengiriman, Berat_Pengiriman, Id_Pengepul, Id_Kurir) values (@nop, @tgl1, @brt, @idp1, @idp2)";
+                SqlCommand cmd = new SqlCommand(str, koneksi);
+                cmd.Parameters.Add(new SqlParameter("@nop", noTransaksi));
+                cmd.Parameters.Add(new SqlParameter("@tgl1", tglpengiriman));
+                cmd.Parameters.Add(new SqlParameter("@brt", brtPengiriman));
+                cmd.Parameters.Add(new SqlParameter("@idp1", idPengepul));
+                cmd.Parameters.Add(new SqlParameter("@idp2", idKurir));
+                cmd.ExecuteNonQuery();
+
+                koneksi.Close();
+                MessageBox.Show("Data Berhasil Disimpan", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView();
+                refreshform();
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
