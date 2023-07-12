@@ -255,5 +255,22 @@ namespace ProjectUAS
                 refreshform();
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                idp.Text = row.Cells["Id_pangan"].Value.ToString();
+                cbxjp.Text = row.Cells["Jenis_Pangan"].Value.ToString();
+                nmp.Text = row.Cells["Nama_Pangan"].Value.ToString();
+            }
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            dataGridView();
+            btnOpen.Enabled = false;
+        }
     }
 }

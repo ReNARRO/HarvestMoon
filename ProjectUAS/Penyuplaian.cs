@@ -248,7 +248,8 @@ namespace ProjectUAS
                 string tglMenerima = dtptanggal2.Text;
                 string idPetani = idp1.Text;
                 string idPengepul = idp2.Text;
-                string str2 = "Update Rekap_Penyuplaian set No_Penyuplaian = @nop, Tgl_Menyuplai = @tgl1,Berat_Suplai = @brt, Tgl_menerima = @tgl2, Id_Petani = @idp1, Id_Pengepul = @idp2 where No_Penyuplaian = @nop";
+                string str2 = "Update Rekap_Penyuplaian set No_Penyuplaian = @nop, Tgl_Menyuplai = @tgl1," +
+                    "Berat_Suplai = @brt, Tgl_Menerima = @tgl2, Id_Petani = @idp1, Id_Pengepul = @idp2 where No_Penyuplaian = @nop";
                 SqlCommand cmd2 = new SqlCommand(str2, koneksi);
                 cmd2.Parameters.Add(new SqlParameter("@nop", noPenyuplaian));
                 cmd2.Parameters.Add(new SqlParameter("@tgl1", tglMenyuplai));
@@ -277,6 +278,20 @@ namespace ProjectUAS
                 koneksi.Close();
                 dataGridView();
                 refreshform();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                nop.Text = row.Cells["No_Penyuplaian"].Value.ToString();
+                dtptanggal1.Text = row.Cells["Tgl_Menyuplai"].Value.ToString();
+                brt.Text = row.Cells["Berat_Suplai"].Value.ToString();
+                dtptanggal2.Text = row.Cells["Tgl_Menerima"].Value.ToString();
+                idp1.Text = row.Cells["Id_Petani"].Value.ToString();
+                idp2.Text = row.Cells["Id_Pengepul"].Value.ToString();
             }
         }
     }

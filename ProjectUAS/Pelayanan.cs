@@ -239,7 +239,8 @@ namespace ProjectUAS
                 string brtPengiriman = brt.Text;
                 string idPengepul = idp1.Text;
                 string idKurir = idp2.Text;
-                string str2 = "Update Rekap_Pelayanan set No_Transaksi = @nop, Tgl_pengiriman= @tgl1, Berat_Pengiriman = @brt, Id_Pengepul = @idp1, Id_Kurir = @idp2 where No_Transaksi= @nop";
+                string str2 = "Update Rekap_Pelayanan set No_Transaksi = @nop, Tgl_pengiriman= @tgl1, " +
+                    "Berat_Pengiriman = @brt, Id_Pengepul = @idp1, Id_Kurir = @idp2 where No_Transaksi= @nop";
                 SqlCommand cmd2 = new SqlCommand(str2, koneksi);
                 cmd2.Parameters.Add(new SqlParameter("@nop", noTransaksi2));
                 cmd2.Parameters.Add(new SqlParameter("@tgl1", tglpengiriman));
@@ -267,6 +268,19 @@ namespace ProjectUAS
                 koneksi.Close();
                 dataGridView();
                 refreshform();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                nop.Text = row.Cells["No_Transaksi"].Value.ToString();
+                dtptanggal1.Text = row.Cells["Tgl_pengiriman"].Value.ToString();
+                brt.Text = row.Cells["Berat_Pengiriman"].Value.ToString();
+                idp1.Text = row.Cells["Id_Pengepul"].Value.ToString();
+                idp2.Text = row.Cells["Id_Kurir"].Value.ToString();
             }
         }
     }
