@@ -122,14 +122,6 @@ namespace ProjectUAS
             {
                 MessageBox.Show("Masukkan Nama Pengepul", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if (alPengepul == "")
-            {
-                MessageBox.Show("Masukkan Alamat Pengepul", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (noPengepul == "")
-            {
-                MessageBox.Show("Masukkan Nomor HP Pengepul", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
             else
             {
                 koneksi.Open();
@@ -227,7 +219,54 @@ namespace ProjectUAS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            string idPengepul = idp.Text.Trim();
 
+            try
+            {
+                koneksi.Open();
+                string str = "Select Count(*) From Pengepul where Id_Pengepul = @idp";
+                using (SqlCommand cmd = new SqlCommand(str, koneksi))
+                {
+                    cmd.Parameters.AddWithValue("@idp", idPengepul);
+                    int existingCount = (int)cmd.ExecuteScalar();
+                    if (existingCount == 0)
+                    {
+                        MessageBox.Show("Id Pengepul tidak ditemukan.");
+                        return;
+                    }
+                }
+                string idPengepul2 = idp.Text;
+                string nmPengepul = nmp.Text;
+                string alPengepul = alp.Text;
+                string noPengepul = nop.Text;
+                string str2 = "Update Pengepul set Id_Pengepul = @idp, Nama_Pengepul = @nmp, Alamat = @alp, No_HP = @nop where Id_Pengepul = @idp";
+                SqlCommand cmd2 = new SqlCommand(str2, koneksi);
+                cmd2.Parameters.Add(new SqlParameter("@idp", idPengepul2));
+                cmd2.Parameters.Add(new SqlParameter("@nmp", nmPengepul));
+                cmd2.Parameters.Add(new SqlParameter("@alp", alPengepul));
+                cmd2.Parameters.Add(new SqlParameter("@nop", noPengepul));
+                int rowsAffected = cmd2.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Data Pengepul berhasil diupdate.");
+                }
+                else
+                {
+                    MessageBox.Show("Gagal mengupdate Data Pengepul.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+                dataGridView();
+                refreshform();
+            }
         }
     }
 }

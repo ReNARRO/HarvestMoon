@@ -206,10 +206,54 @@ namespace ProjectUAS
                 refreshform();
             }
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            string idPangan = idp.Text.Trim();
             
+            try
+            {
+                koneksi.Open();
+                string str = "Select Count(*) From Pangan where Id_Pangan = @idp";
+                using (SqlCommand cmd = new SqlCommand(str, koneksi))
+                {
+                    cmd.Parameters.AddWithValue("@idp", idPangan);
+                    int existingCount = (int)cmd.ExecuteScalar();
+                    if (existingCount == 0)
+                    {
+                        MessageBox.Show("Id Pangan tidak ditemukan.");
+                        return;
+                    }                   
+                }
+                string idPangan2 = idp.Text;
+                string jpPangan = cbxjp.Text;
+                string nmPangan = nmp.Text;
+                string str2 = "Update Pangan set Id_Pangan = @idp, Jenis_Pangan = @jpp, Nama_Pangan = @nmp where Id_Pangan = @idp";
+                SqlCommand cmd2 = new SqlCommand(str2, koneksi);
+                cmd2.Parameters.AddWithValue("@idp", idPangan2);
+                cmd2.Parameters.AddWithValue("@jpp", jpPangan);
+                cmd2.Parameters.AddWithValue("@nmp", nmPangan);
+                int rowsAffected = cmd2.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Data Pangan berhasil diupdate.");
+                }
+                else
+                {
+                    MessageBox.Show("Gagal mengupdate Data Pangan.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+                dataGridView();
+                refreshform();
+            }
         }
     }
 }

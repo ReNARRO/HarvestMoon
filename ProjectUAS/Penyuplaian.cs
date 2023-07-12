@@ -226,7 +226,58 @@ namespace ProjectUAS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            string noPenyupalaian = nop.Text.Trim();
 
+            try
+            {
+                koneksi.Open();
+                string str = "Select Count(*) From Rekap_Penyuplaian where No_Penyuplaian = @nop";
+                using (SqlCommand cmd = new SqlCommand(str, koneksi))
+                {
+                    cmd.Parameters.AddWithValue("@nop", noPenyupalaian);
+                    int existingCount = (int)cmd.ExecuteScalar();
+                    if (existingCount == 0)
+                    {
+                        MessageBox.Show("Data Penyuplaian tidak ditemukan.");
+                        return;
+                    }
+                }
+                string noPenyuplaian = nop.Text;
+                string tglMenyuplai = dtptanggal1.Text;
+                string brtSuplai = brt.Text;
+                string tglMenerima = dtptanggal2.Text;
+                string idPetani = idp1.Text;
+                string idPengepul = idp2.Text;
+                string str2 = "Update Rekap_Penyuplaian set No_Penyuplaian = @nop, Tgl_Menyuplai = @tgl1,Berat_Suplai = @brt, Tgl_menerima = @tgl2, Id_Petani = @idp1, Id_Pengepul = @idp2 where No_Penyuplaian = @nop";
+                SqlCommand cmd2 = new SqlCommand(str2, koneksi);
+                cmd2.Parameters.Add(new SqlParameter("@nop", noPenyuplaian));
+                cmd2.Parameters.Add(new SqlParameter("@tgl1", tglMenyuplai));
+                cmd2.Parameters.Add(new SqlParameter("@brt", brtSuplai));
+                cmd2.Parameters.Add(new SqlParameter("@tgl2", tglMenerima));
+                cmd2.Parameters.Add(new SqlParameter("@idp1", idPetani));
+                cmd2.Parameters.Add(new SqlParameter("@idp2", idPengepul));
+                int rowsAffected = cmd2.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Data Pengiriman berhasil diupdate.");
+                }
+                else
+                {
+                    MessageBox.Show("Gagal mengupdate data Pengiriman.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+                dataGridView();
+                refreshform();
+            }
         }
     }
 }

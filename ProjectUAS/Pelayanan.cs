@@ -218,7 +218,56 @@ namespace ProjectUAS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            string noTransaksi = nop.Text.Trim();
 
+            try
+            {
+                koneksi.Open();
+                string str = "Select Count(*) From Rekap_Pelayanan where No_Transaksi = @nop";
+                using (SqlCommand cmd = new SqlCommand(str, koneksi))
+                {
+                    cmd.Parameters.AddWithValue("@nop", noTransaksi);
+                    int existingCount = (int)cmd.ExecuteScalar();
+                    if (existingCount == 0)
+                    {
+                        MessageBox.Show("Data Pelayanan tidak ditemukan.");
+                        return;
+                    }
+                }
+                string noTransaksi2 = nop.Text;
+                string tglpengiriman = dtptanggal1.Text;
+                string brtPengiriman = brt.Text;
+                string idPengepul = idp1.Text;
+                string idKurir = idp2.Text;
+                string str2 = "Update Rekap_Pelayanan set No_Transaksi = @nop, Tgl_pengiriman= @tgl1, Berat_Pengiriman = @brt, Id_Pengepul = @idp1, Id_Kurir = @idp2 where No_Transaksi= @nop";
+                SqlCommand cmd2 = new SqlCommand(str2, koneksi);
+                cmd2.Parameters.Add(new SqlParameter("@nop", noTransaksi2));
+                cmd2.Parameters.Add(new SqlParameter("@tgl1", tglpengiriman));
+                cmd2.Parameters.Add(new SqlParameter("@brt", brtPengiriman));
+                cmd2.Parameters.Add(new SqlParameter("@idp1", idPengepul));
+                cmd2.Parameters.Add(new SqlParameter("@idp2", idKurir));
+                int rowsAffected = cmd2.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Data Pelayanan berhasil diupdate.");
+                }
+                else
+                {
+                    MessageBox.Show("Gagal mengupdate data Pelayanan.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+                dataGridView();
+                refreshform();
+            }
         }
     }
 }

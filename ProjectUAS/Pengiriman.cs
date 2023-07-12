@@ -216,7 +216,54 @@ namespace ProjectUAS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            string noPengiriman = nop.Text.Trim();
 
+            try
+            {
+                koneksi.Open();
+                string str = "Select Count(*) From Rekap_Pengiriman where No_Pengiriman = @nop";
+                using (SqlCommand cmd = new SqlCommand(str, koneksi))
+                {
+                    cmd.Parameters.AddWithValue("@nop", noPengiriman);
+                    int existingCount = (int)cmd.ExecuteScalar();
+                    if (existingCount == 0)
+                    {
+                        MessageBox.Show("Dta Pengiriman tidak ditemukan.");
+                        return;
+                    }
+                }
+                string noPengiriman2 = nop.Text;
+                string tglPenerimaan = dtptanggal1.Text;
+                string idKurir = idp1.Text;
+                string idPedagang = idp2.Text;
+                string str2 = "Update Rekap_Pengiriman set No_Pengiriman = @nop, Tgl_Penerimaan = @tgl1, Id_Kurir = @idp1, Id_Pedagang = @idp2 where No_Pengiriman = @nop";
+                SqlCommand cmd2 = new SqlCommand(str2, koneksi);
+                cmd2.Parameters.Add(new SqlParameter("@nop", noPengiriman2));
+                cmd2.Parameters.Add(new SqlParameter("@tgl1", tglPenerimaan));
+                cmd2.Parameters.Add(new SqlParameter("@idp1", idKurir));
+                cmd2.Parameters.Add(new SqlParameter("@idp2", idPedagang));
+                int rowsAffected = cmd2.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Data Pengiriman berhasil diupdate.");
+                }
+                else
+                {
+                    MessageBox.Show("Gagal mengupdate data Pengiriman.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+                dataGridView();
+                refreshform();
+            }
         }
     }
 }

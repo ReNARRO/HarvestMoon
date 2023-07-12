@@ -121,14 +121,7 @@ namespace ProjectUAS
             {
                 MessageBox.Show("Masukkan Nama Pedagang", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if (alPedagang == "")
-            {
-                MessageBox.Show("Masukkan Alamat Pedagang", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (noPedagang == "")
-            {
-                MessageBox.Show("Masukkan Nomor HP Pedagang", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            
             else
             {
                 koneksi.Open();
@@ -227,7 +220,57 @@ namespace ProjectUAS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            string idPedagang= idp.Text.Trim();
 
+            try
+            {
+                koneksi.Open();
+                string str = "Select Count(*) From Pedagang where Id_Pedagang = @idp";
+                using (SqlCommand cmd = new SqlCommand(str, koneksi))
+                {
+                    cmd.Parameters.AddWithValue("@idp", idPedagang);
+                    int existingCount = (int)cmd.ExecuteScalar();
+                    if (existingCount == 0)
+                    {
+                        MessageBox.Show("Id Pedagang tidak ditemukan.");
+                        return;
+                    }
+                }
+                string idPedagang2 = idp.Text;
+                string nmPedagang = nmp.Text;
+                string alPedagang = alp.Text;
+                string noPedagang = nop.Text;
+                string stokPenjualan = stok.Text;
+                string str2 = "Update Pedagang set Id_Pedagang = @idp, Nama_Pedagang= @nmp, Alamat = @alp, No_HP = @nop, Stok_Penjualan = @stk where Id_Pedagang = @idp";
+                SqlCommand cmd2 = new SqlCommand(str2, koneksi);
+                cmd2.Parameters.Add(new SqlParameter("@idp", idPedagang2));
+                cmd2.Parameters.Add(new SqlParameter("@nmp", nmPedagang));
+                cmd2.Parameters.Add(new SqlParameter("@alp", alPedagang));
+                cmd2.Parameters.Add(new SqlParameter("@nop", noPedagang));
+                cmd2.Parameters.Add(new SqlParameter("@stk", stokPenjualan));
+
+                int rowsAffected = cmd2.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Data Pedagang berhasil diupdate.");
+                }
+                else
+                {
+                    MessageBox.Show("Gagal mengupdate Data Pedagang.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+                dataGridView();
+                refreshform();
+            }
         }
     }
 }

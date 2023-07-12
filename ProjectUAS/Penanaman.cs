@@ -221,7 +221,59 @@ namespace ProjectUAS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            string noPenanaman = nop.Text.Trim();
 
+            try
+            {
+                koneksi.Open();
+                string str = "Select Count(*) From Rekap_Penanaman where No_Penanaman = @nop";
+                using (SqlCommand cmd = new SqlCommand(str, koneksi))
+                {
+                    cmd.Parameters.AddWithValue("@nop", noPenanaman);
+                    int existingCount = (int)cmd.ExecuteScalar();
+                    if (existingCount == 0)
+                    {
+                        MessageBox.Show("Data Penanaman tidak ditemukan.");
+                        return;
+                    }
+                }
+                string noPenanaman2 = nop.Text;
+                string tglTanam = dtptanggal1.Text;
+                string tglPanen = dtptanggal2.Text;
+                string brtPanen = brt.Text;
+                string idPangan = idp1.Text;
+                string idPetani = idp2.Text;
+                string str2 = "Update Rekap_Penanaman set No_Penanaman = @nop, Tgl_tanam= @tgl1, Tgl_Panen = @tgl2, " +
+                    "Berat_Pangan = @brt, Id_Pangan = @idp1, Id_Petani = @idp2 where No_Penanaman = @nop";
+                SqlCommand cmd2 = new SqlCommand(str2, koneksi);
+                cmd2.Parameters.Add(new SqlParameter("@nop", noPenanaman2));
+                cmd2.Parameters.Add(new SqlParameter("@tgl1", tglTanam));
+                cmd2.Parameters.Add(new SqlParameter("@tgl2", tglPanen));
+                cmd2.Parameters.Add(new SqlParameter("@brt", brtPanen));
+                cmd2.Parameters.Add(new SqlParameter("@idp1", idPangan));
+                cmd2.Parameters.Add(new SqlParameter("@idp2", idPetani));
+                int rowsAffected = cmd2.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Data Penanaman berhasil diupdate.");
+                }
+                else
+                {
+                    MessageBox.Show("Gagal mengupdate data Penanaman.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+                dataGridView();
+                refreshform();
+            }
         }
     }
 }

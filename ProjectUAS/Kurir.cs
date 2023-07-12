@@ -226,7 +226,54 @@ namespace ProjectUAS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            string idKurir = idp.Text.Trim();
 
+            try
+            {
+                koneksi.Open();
+                string str = "Select Count(*) From Kurir where Id_Kurir = @idp";
+                using (SqlCommand cmd = new SqlCommand(str, koneksi))
+                {
+                    cmd.Parameters.AddWithValue("@idp", idKurir);
+                    int existingCount = (int)cmd.ExecuteScalar();
+                    if (existingCount == 0)
+                    {
+                        MessageBox.Show("Id Kurir tidak ditemukan.");
+                        return;
+                    }
+                }
+                string idKurir2 = idp.Text;
+                string nmKurir = nmp.Text;
+                string jkKurir = cbxjk.Text;
+                string noKurir = nop.Text;
+                string str2 = "Update Kurir set Id_Kurir = @idp, Nama_Kurir = @nmp, Jenis_Kelamin = @alp, No_HP = @nop where Id_Kurir= @idp";
+                SqlCommand cmd2 = new SqlCommand(str2, koneksi);
+                cmd2.Parameters.Add(new SqlParameter("@idp", idKurir2));
+                cmd2.Parameters.Add(new SqlParameter("@nmp", nmKurir));
+                cmd2.Parameters.Add(new SqlParameter("@alp", jkKurir));
+                cmd2.Parameters.Add(new SqlParameter("@nop", noKurir));
+                int rowsAffected = cmd2.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Data Kurir berhasil diupdate.");
+                }
+                else
+                {
+                    MessageBox.Show("Gagal mengupdate Data Kurir.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+                dataGridView();
+                refreshform();
+            }
         }
     }
 }

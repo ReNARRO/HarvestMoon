@@ -102,14 +102,6 @@ namespace ProjectUAS
             {
                 MessageBox.Show("Masukkan Nama Petani", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if (alPetani == "")
-            {
-                MessageBox.Show("Masukkan Alamat Petani", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            if (noPetani == "")
-            {
-                MessageBox.Show("Masukkan Nomor HP Petani", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
             else
             {
                 koneksi.Open();
@@ -225,7 +217,54 @@ namespace ProjectUAS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            
+            string idPetani = idp.Text.Trim();
+
+            try
+            {
+                koneksi.Open();
+                string str = "Select Count(*) From Petani where Id_Petani = @idp";
+                using (SqlCommand cmd = new SqlCommand(str, koneksi))
+                {
+                    cmd.Parameters.AddWithValue("@idp", idPetani);
+                    int existingCount = (int)cmd.ExecuteScalar();
+                    if (existingCount == 0)
+                    {
+                        MessageBox.Show("Id Petani tidak ditemukan.");
+                        return;
+                    }
+                }
+                string idPetani2 = idp.Text;
+                string nmPetani = nmp.Text;
+                string alPetani = alp.Text;
+                string noPetani = nop.Text;
+                string str2 = "Update Petani set Id_Petani = @idp, Nama_Petani = @nmp, Alamat = @alp, No_HP = @nop where Id_Petani = @idp";
+                SqlCommand cmd2 = new SqlCommand(str2, koneksi);
+                cmd2.Parameters.Add(new SqlParameter("@idp", idPetani2));
+                cmd2.Parameters.Add(new SqlParameter("@nmp", nmPetani));
+                cmd2.Parameters.Add(new SqlParameter("@alp", alPetani));
+                cmd2.Parameters.Add(new SqlParameter("@nop", noPetani));
+                int rowsAffected = cmd2.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Data Petani berhasil diupdate.");
+                }
+                else
+                {
+                    MessageBox.Show("Gagal mengupdate data Petani.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+                dataGridView();
+                refreshform();
+            }
         }
     }
 }
