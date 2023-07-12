@@ -209,15 +209,7 @@ namespace ProjectUAS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            koneksi.Open();
-            string queryString = "Update dbo.Pangan set Id_Pangan='" + idp.Text + "', Jenis_Pangan='" + cbxjp.Text + "', Nama_Pangan ='" + nmp.Text + "";
-            SqlCommand cmd = new SqlCommand(queryString, koneksi);
-            cmd.CommandType = CommandType.Text;
-            cmd.ExecuteNonQuery();
-            koneksi.Close();
-            MessageBox.Show("Update Data Berhasil");
-            dataGridView();
-            refreshform();
+            
         }
     }
 }

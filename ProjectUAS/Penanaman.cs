@@ -35,7 +35,9 @@ namespace ProjectUAS
             idp2.Text = "";
             idp2.Enabled = false;
             btnSave.Enabled = false;
-            btnClear.Enabled = false;
+            btnDelete.Enabled = false;
+            btnSearch.Enabled = false;
+            btnUpdate.Enabled = false;
         }
         private void dataGridView()
         {
@@ -83,9 +85,47 @@ namespace ProjectUAS
             this.Hide();
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
+            string noPenanaman = nop.Text;
+            try
+            {
+                koneksi.Open();
+                string str = "Select Count(*) From Rekap_Penanaman where No_Penanaman = @nop";
+                using (SqlCommand cmd = new SqlCommand(str, koneksi))
+                {
+                    cmd.Parameters.AddWithValue("@nop", noPenanaman);
+                    int existingCount = (int)cmd.ExecuteScalar();
+                    if (existingCount == 0)
+                    {
+                        MessageBox.Show("Nomor Penanaman tidak ditemukan.");
+                        return;
+                    }
+                    DialogResult result = MessageBox.Show("Apakah Anda yakin ingin menghapus Nomor Penanaman?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        string str2 = "Delete from Rekap_Penanaman where No_Penanaman = @nop";
+                        SqlCommand cmd2 = new SqlCommand(str2, koneksi);
+                        cmd2.Parameters.AddWithValue("@nop", noPenanaman);
 
+                        int rowsAffected = cmd2.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Nomor Penanaman berhasil dihapus.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+                dataGridView();
+                refreshform();
+            }
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -103,7 +143,9 @@ namespace ProjectUAS
             idp1.Enabled = true;
             idp2.Enabled = true;
             btnSave.Enabled = true;
-            btnClear.Enabled = true;
+            btnDelete.Enabled = true;
+            btnSearch.Enabled = true;
+            btnUpdate.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -141,6 +183,45 @@ namespace ProjectUAS
                 dataGridView();
                 refreshform();
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string noPenanaman = nop.Text;
+            try
+            {
+                koneksi.Open();
+                string str = "Select No_Penanaman, Tgl_tanam, Tgl_Panen, Berat_Pangan, Id_Pangan, Id_Petani From Rekap_Penanaman Where No_Penanaman = @nop ";
+
+                SqlCommand cmd = new SqlCommand(str, koneksi);
+                cmd.Parameters.AddWithValue("@nop", noPenanaman);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("Nomor Penanaman tidak ditemukan.");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

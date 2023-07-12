@@ -32,7 +32,9 @@ namespace ProjectUAS
             idp2.Text = "";
             idp2.Enabled = false;
             btnSave.Enabled = false;
-            btnClear.Enabled = false;
+            btnDelete.Enabled = false;
+            btnSearch.Enabled = false;
+            btnUpdate.Enabled = false;
         }
         private void dataGridView()
         {
@@ -97,7 +99,9 @@ namespace ProjectUAS
             idp1.Enabled = true;
             idp2.Enabled = true;
             btnSave.Enabled = true;
-            btnClear.Enabled = true;
+            btnDelete.Enabled = true;
+            btnSearch.Enabled = true;
+            btnUpdate.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -133,7 +137,84 @@ namespace ProjectUAS
             }
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string noPengiriman = nop.Text;
+            try
+            {
+                koneksi.Open();
+                string str = "Select Count(*) From Rekap_Pengiriman where No_Pengiriman = @nop";
+                using (SqlCommand cmd = new SqlCommand(str, koneksi))
+                {
+                    cmd.Parameters.AddWithValue("@nop", noPengiriman);
+                    int existingCount = (int)cmd.ExecuteScalar();
+                    if (existingCount == 0)
+                    {
+                        MessageBox.Show("Nomor Pengiriman tidak ditemukan.");
+                        return;
+                    }
+                    DialogResult result = MessageBox.Show("Apakah Anda yakin ingin menghapus Nomor Pengiriman?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        string str2 = "Delete from Rekap_Pengiriman where No_Pengiriman = @nop";
+                        SqlCommand cmd2 = new SqlCommand(str2, koneksi);
+                        cmd2.Parameters.AddWithValue("@nop", noPengiriman);
+
+                        int rowsAffected = cmd2.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Nomor Pengiriman berhasil dihapus.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+                dataGridView();
+                refreshform();
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string noPengiriman = nop.Text;
+            try
+            {
+                koneksi.Open();
+                string str = "Select No_Pengiriman, Tgl_Penerimaan, Id_Kurir, Id_Pedagang From Rekap_Pengiriman Where No_Pengiriman = @nop ";
+
+                SqlCommand cmd = new SqlCommand(str, koneksi);
+                cmd.Parameters.AddWithValue("@nop", noPengiriman);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("Nomor Pengiriman tidak ditemukan.");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
 
         }

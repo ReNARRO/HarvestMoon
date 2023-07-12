@@ -39,7 +39,7 @@
             this.btnPenanaman = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.idp1 = new System.Windows.Forms.TextBox();
@@ -54,6 +54,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtptanggal1 = new System.Windows.Forms.DateTimePicker();
             this.idp2 = new System.Windows.Forms.TextBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -211,19 +213,19 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // btnClear
+            // btnDelete
             // 
-            this.btnClear.Location = new System.Drawing.Point(583, 516);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(89, 29);
-            this.btnClear.TabIndex = 77;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnDelete.Location = new System.Drawing.Point(335, 504);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(89, 29);
+            this.btnDelete.TabIndex = 77;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(456, 516);
+            this.btnSave.Location = new System.Drawing.Point(229, 504);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(89, 29);
             this.btnSave.TabIndex = 76;
@@ -233,7 +235,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(702, 307);
+            this.btnAdd.Location = new System.Drawing.Point(833, 310);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(89, 29);
             this.btnAdd.TabIndex = 75;
@@ -243,29 +245,29 @@
             // 
             // idp1
             // 
-            this.idp1.Location = new System.Drawing.Point(456, 438);
+            this.idp1.Location = new System.Drawing.Point(382, 429);
             this.idp1.Name = "idp1";
-            this.idp1.Size = new System.Drawing.Size(216, 22);
+            this.idp1.Size = new System.Drawing.Size(243, 22);
             this.idp1.TabIndex = 74;
             // 
             // brt
             // 
-            this.brt.Location = new System.Drawing.Point(456, 397);
+            this.brt.Location = new System.Drawing.Point(382, 388);
             this.brt.Name = "brt";
-            this.brt.Size = new System.Drawing.Size(216, 22);
+            this.brt.Size = new System.Drawing.Size(243, 22);
             this.brt.TabIndex = 73;
             // 
             // nop
             // 
-            this.nop.Location = new System.Drawing.Point(456, 310);
+            this.nop.Location = new System.Drawing.Point(382, 301);
             this.nop.Name = "nop";
-            this.nop.Size = new System.Drawing.Size(216, 22);
+            this.nop.Size = new System.Drawing.Size(243, 22);
             this.nop.TabIndex = 72;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(300, 438);
+            this.label4.Location = new System.Drawing.Point(226, 429);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 16);
             this.label4.TabIndex = 71;
@@ -274,7 +276,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(300, 400);
+            this.label3.Location = new System.Drawing.Point(226, 391);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 16);
             this.label3.TabIndex = 70;
@@ -283,7 +285,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(300, 356);
+            this.label5.Location = new System.Drawing.Point(226, 347);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(129, 16);
             this.label5.TabIndex = 69;
@@ -292,7 +294,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(300, 313);
+            this.label6.Location = new System.Drawing.Point(226, 304);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 16);
             this.label6.TabIndex = 68;
@@ -300,7 +302,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(816, 100);
+            this.btnOpen.Location = new System.Drawing.Point(833, 347);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(89, 29);
             this.btnOpen.TabIndex = 67;
@@ -312,17 +314,17 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(303, 100);
+            this.dataGridView1.Location = new System.Drawing.Point(226, 100);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(488, 189);
+            this.dataGridView1.Size = new System.Drawing.Size(696, 189);
             this.dataGridView1.TabIndex = 66;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(300, 474);
+            this.label2.Location = new System.Drawing.Point(226, 465);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 16);
             this.label2.TabIndex = 79;
@@ -330,27 +332,49 @@
             // 
             // dtptanggal1
             // 
-            this.dtptanggal1.Location = new System.Drawing.Point(456, 351);
+            this.dtptanggal1.Location = new System.Drawing.Point(382, 342);
             this.dtptanggal1.Name = "dtptanggal1";
-            this.dtptanggal1.Size = new System.Drawing.Size(216, 22);
+            this.dtptanggal1.Size = new System.Drawing.Size(243, 22);
             this.dtptanggal1.TabIndex = 80;
             // 
             // idp2
             // 
-            this.idp2.Location = new System.Drawing.Point(456, 471);
+            this.idp2.Location = new System.Drawing.Point(382, 462);
             this.idp2.Name = "idp2";
-            this.idp2.Size = new System.Drawing.Size(216, 22);
+            this.idp2.Size = new System.Drawing.Size(243, 22);
             this.idp2.TabIndex = 81;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(430, 504);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(89, 29);
+            this.btnUpdate.TabIndex = 83;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(536, 504);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(89, 29);
+            this.btnSearch.TabIndex = 82;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // Pelayanan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 599);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.idp2);
             this.Controls.Add(this.dtptanggal1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.idp1);
@@ -389,7 +413,7 @@
         private System.Windows.Forms.Button btnPenanaman;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox idp1;
@@ -404,5 +428,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtptanggal1;
         private System.Windows.Forms.TextBox idp2;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

@@ -173,9 +173,6 @@ namespace ProjectUAS
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Id Petani berhasil dihapus.");
-                            dataGridView();
-                            refreshform();
-
                         }
                     }
                 }
@@ -228,7 +225,7 @@ namespace ProjectUAS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

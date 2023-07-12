@@ -42,7 +42,7 @@
             this.idp2 = new System.Windows.Forms.TextBox();
             this.dtptanggal1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.idp1 = new System.Windows.Forms.TextBox();
@@ -56,6 +56,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dtptanggal2 = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -215,40 +217,40 @@
             // 
             // idp2
             // 
-            this.idp2.Location = new System.Drawing.Point(424, 502);
+            this.idp2.Location = new System.Drawing.Point(382, 502);
             this.idp2.Name = "idp2";
-            this.idp2.Size = new System.Drawing.Size(216, 22);
+            this.idp2.Size = new System.Drawing.Size(243, 22);
             this.idp2.TabIndex = 96;
             // 
             // dtptanggal1
             // 
-            this.dtptanggal1.Location = new System.Drawing.Point(424, 346);
+            this.dtptanggal1.Location = new System.Drawing.Point(382, 346);
             this.dtptanggal1.Name = "dtptanggal1";
-            this.dtptanggal1.Size = new System.Drawing.Size(216, 22);
+            this.dtptanggal1.Size = new System.Drawing.Size(243, 22);
             this.dtptanggal1.TabIndex = 95;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(268, 505);
+            this.label2.Location = new System.Drawing.Point(226, 505);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 16);
             this.label2.TabIndex = 94;
             this.label2.Text = "Id Petani";
             // 
-            // btnClear
+            // btnDelete
             // 
-            this.btnClear.Location = new System.Drawing.Point(551, 545);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(89, 29);
-            this.btnClear.TabIndex = 93;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnDelete.Location = new System.Drawing.Point(335, 545);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(89, 29);
+            this.btnDelete.TabIndex = 93;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(424, 545);
+            this.btnSave.Location = new System.Drawing.Point(226, 545);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(89, 29);
             this.btnSave.TabIndex = 92;
@@ -258,7 +260,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(670, 302);
+            this.btnAdd.Location = new System.Drawing.Point(833, 308);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(89, 29);
             this.btnAdd.TabIndex = 91;
@@ -268,29 +270,29 @@
             // 
             // idp1
             // 
-            this.idp1.Location = new System.Drawing.Point(424, 464);
+            this.idp1.Location = new System.Drawing.Point(382, 464);
             this.idp1.Name = "idp1";
-            this.idp1.Size = new System.Drawing.Size(216, 22);
+            this.idp1.Size = new System.Drawing.Size(243, 22);
             this.idp1.TabIndex = 90;
             // 
             // brt
             // 
-            this.brt.Location = new System.Drawing.Point(424, 428);
+            this.brt.Location = new System.Drawing.Point(382, 428);
             this.brt.Name = "brt";
-            this.brt.Size = new System.Drawing.Size(216, 22);
+            this.brt.Size = new System.Drawing.Size(243, 22);
             this.brt.TabIndex = 89;
             // 
             // nop
             // 
-            this.nop.Location = new System.Drawing.Point(424, 305);
+            this.nop.Location = new System.Drawing.Point(382, 305);
             this.nop.Name = "nop";
-            this.nop.Size = new System.Drawing.Size(216, 22);
+            this.nop.Size = new System.Drawing.Size(243, 22);
             this.nop.TabIndex = 88;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(268, 467);
+            this.label4.Location = new System.Drawing.Point(226, 467);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 16);
             this.label4.TabIndex = 87;
@@ -299,7 +301,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(268, 428);
+            this.label3.Location = new System.Drawing.Point(226, 428);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 16);
             this.label3.TabIndex = 86;
@@ -308,7 +310,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(268, 351);
+            this.label5.Location = new System.Drawing.Point(226, 351);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(104, 16);
             this.label5.TabIndex = 85;
@@ -317,7 +319,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(268, 308);
+            this.label6.Location = new System.Drawing.Point(226, 308);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 16);
             this.label6.TabIndex = 84;
@@ -325,7 +327,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(784, 95);
+            this.btnOpen.Location = new System.Drawing.Point(833, 351);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(89, 29);
             this.btnOpen.TabIndex = 83;
@@ -337,40 +339,62 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(271, 95);
+            this.dataGridView1.Location = new System.Drawing.Point(226, 97);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(488, 189);
+            this.dataGridView1.Size = new System.Drawing.Size(696, 189);
             this.dataGridView1.TabIndex = 82;
             // 
             // dtptanggal2
             // 
-            this.dtptanggal2.Location = new System.Drawing.Point(424, 386);
+            this.dtptanggal2.Location = new System.Drawing.Point(382, 386);
             this.dtptanggal2.Name = "dtptanggal2";
-            this.dtptanggal2.Size = new System.Drawing.Size(216, 22);
+            this.dtptanggal2.Size = new System.Drawing.Size(243, 22);
             this.dtptanggal2.TabIndex = 97;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(268, 391);
+            this.label7.Location = new System.Drawing.Point(226, 391);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 16);
             this.label7.TabIndex = 98;
             this.label7.Text = "Tanggal Panen";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(430, 545);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(89, 29);
+            this.btnUpdate.TabIndex = 100;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(536, 545);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(89, 29);
+            this.btnSearch.TabIndex = 99;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // Penanaman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 599);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dtptanggal2);
             this.Controls.Add(this.idp2);
             this.Controls.Add(this.dtptanggal1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.idp1);
@@ -412,7 +436,7 @@
         private System.Windows.Forms.TextBox idp2;
         private System.Windows.Forms.DateTimePicker dtptanggal1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox idp1;
@@ -426,5 +450,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DateTimePicker dtptanggal2;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

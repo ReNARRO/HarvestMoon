@@ -161,7 +161,7 @@ namespace ProjectUAS
                     int existingCount = (int)cmd.ExecuteScalar();
                     if (existingCount == 0)
                     {
-                        MessageBox.Show("Id Pangan tidak ditemukan.");
+                        MessageBox.Show("Id Pedagang tidak ditemukan.");
                         return;
                     }
                     DialogResult result = MessageBox.Show("Apakah Anda yakin ingin menghapus Id Pedagang?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
