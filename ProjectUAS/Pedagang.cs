@@ -35,7 +35,8 @@ namespace ProjectUAS
             stok.Text = "";
             stok.Enabled = false;
             btnSave.Enabled = false;
-            btnClear.Enabled = false;
+            btnDelete.Enabled = false;
+
         }
         private void dataGridView()
         {
@@ -102,7 +103,7 @@ namespace ProjectUAS
             nop.Enabled = true;
             stok.Enabled = true;
             btnSave.Enabled = true;
-            btnClear.Enabled = true;
+            btnDelete.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -147,7 +148,84 @@ namespace ProjectUAS
             }
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string idPedagang = idp.Text;
+            try
+            {
+                koneksi.Open();
+                string str = "Select Count(*) From Pedagang where Id_Pedagang = @idp";
+                using (SqlCommand cmd = new SqlCommand(str, koneksi))
+                {
+                    cmd.Parameters.AddWithValue("@idp", idPedagang);
+                    int existingCount = (int)cmd.ExecuteScalar();
+                    if (existingCount == 0)
+                    {
+                        MessageBox.Show("Id Pangan tidak ditemukan.");
+                        return;
+                    }
+                    DialogResult result = MessageBox.Show("Apakah Anda yakin ingin menghapus Id Pedagang?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        string str2 = "Delete from Pedagang where Id_Pedagang = @idp";
+                        SqlCommand cmd2 = new SqlCommand(str2, koneksi);
+                        cmd2.Parameters.AddWithValue("@idp", idPedagang);
+
+                        int rowsAffected = cmd2.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Id Petani berhasil dihapus.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+                dataGridView();
+                refreshform();
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string idpedagang = idp.Text;
+            try
+            {
+                koneksi.Open();
+                string str = "Select Id_Pedagang, Nama_Pedagang, Alamat, No_HP, Stok_Penjualan From Pedagang Where Id_Pedagang = @idp ";
+
+                SqlCommand cmd = new SqlCommand(str, koneksi);
+                cmd.Parameters.AddWithValue("@idp", idpedagang);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("Id Pedagang tidak ditemukan.");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
 
         }

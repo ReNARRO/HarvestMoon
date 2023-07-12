@@ -41,7 +41,7 @@
             this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbxjp = new System.Windows.Forms.ComboBox();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.nmp = new System.Windows.Forms.TextBox();
@@ -49,8 +49,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnOpen = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -236,24 +237,24 @@
             "Kacang",
             "Jagung",
             "Sayur"});
-            this.cbxjp.Location = new System.Drawing.Point(440, 339);
+            this.cbxjp.Location = new System.Drawing.Point(382, 333);
             this.cbxjp.Name = "cbxjp";
-            this.cbxjp.Size = new System.Drawing.Size(216, 24);
+            this.cbxjp.Size = new System.Drawing.Size(246, 24);
             this.cbxjp.TabIndex = 78;
             // 
-            // btnClear
+            // btnDelete
             // 
-            this.btnClear.Location = new System.Drawing.Point(567, 440);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(89, 29);
-            this.btnClear.TabIndex = 77;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnDelete.Location = new System.Drawing.Point(338, 422);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(89, 29);
+            this.btnDelete.TabIndex = 77;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(440, 440);
+            this.btnSave.Location = new System.Drawing.Point(231, 422);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(89, 29);
             this.btnSave.TabIndex = 76;
@@ -263,7 +264,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(686, 303);
+            this.btnAdd.Location = new System.Drawing.Point(634, 300);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(89, 29);
             this.btnAdd.TabIndex = 75;
@@ -273,22 +274,22 @@
             // 
             // nmp
             // 
-            this.nmp.Location = new System.Drawing.Point(440, 380);
+            this.nmp.Location = new System.Drawing.Point(382, 374);
             this.nmp.Name = "nmp";
-            this.nmp.Size = new System.Drawing.Size(216, 22);
+            this.nmp.Size = new System.Drawing.Size(246, 22);
             this.nmp.TabIndex = 74;
             // 
             // idp
             // 
-            this.idp.Location = new System.Drawing.Point(440, 306);
+            this.idp.Location = new System.Drawing.Point(382, 300);
             this.idp.Name = "idp";
-            this.idp.Size = new System.Drawing.Size(216, 22);
+            this.idp.Size = new System.Drawing.Size(246, 22);
             this.idp.TabIndex = 72;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(284, 380);
+            this.label4.Location = new System.Drawing.Point(226, 374);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 16);
             this.label4.TabIndex = 71;
@@ -297,7 +298,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(284, 342);
+            this.label3.Location = new System.Drawing.Point(226, 336);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 16);
             this.label3.TabIndex = 70;
@@ -306,40 +307,51 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(284, 309);
+            this.label6.Location = new System.Drawing.Point(226, 303);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 16);
             this.label6.TabIndex = 68;
             this.label6.Text = "Id Pangan";
             // 
-            // btnOpen
+            // btnSearch
             // 
-            this.btnOpen.Location = new System.Drawing.Point(800, 96);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(89, 29);
-            this.btnOpen.TabIndex = 67;
-            this.btnOpen.Text = "Open";
-            this.btnOpen.UseVisualStyleBackColor = true;
-            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            this.btnSearch.Location = new System.Drawing.Point(539, 422);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(89, 29);
+            this.btnSearch.TabIndex = 67;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(287, 96);
+            this.dataGridView1.Location = new System.Drawing.Point(226, 96);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(488, 189);
+            this.dataGridView1.Size = new System.Drawing.Size(696, 189);
             this.dataGridView1.TabIndex = 66;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(433, 422);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(89, 29);
+            this.btnUpdate.TabIndex = 79;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // Pangan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 599);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.cbxjp);
-            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.nmp);
@@ -347,7 +359,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.btnOpen);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMenu);
@@ -378,7 +390,7 @@
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox cbxjp;
-        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox nmp;
@@ -386,7 +398,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

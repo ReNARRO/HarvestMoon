@@ -40,7 +40,7 @@
             this.btnPetani = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.nop = new System.Windows.Forms.TextBox();
@@ -53,6 +53,8 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cbxjk = new System.Windows.Forms.ComboBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -230,19 +232,19 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // btnClear
+            // btnDelete
             // 
-            this.btnClear.Location = new System.Drawing.Point(564, 495);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(89, 29);
-            this.btnClear.TabIndex = 64;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnDelete.Location = new System.Drawing.Point(342, 489);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(89, 29);
+            this.btnDelete.TabIndex = 64;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(437, 495);
+            this.btnSave.Location = new System.Drawing.Point(229, 489);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(89, 29);
             this.btnSave.TabIndex = 63;
@@ -252,7 +254,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(683, 304);
+            this.btnAdd.Location = new System.Drawing.Point(803, 334);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(89, 29);
             this.btnAdd.TabIndex = 62;
@@ -262,29 +264,29 @@
             // 
             // nop
             // 
-            this.nop.Location = new System.Drawing.Point(437, 435);
+            this.nop.Location = new System.Drawing.Point(382, 429);
             this.nop.Name = "nop";
-            this.nop.Size = new System.Drawing.Size(216, 22);
+            this.nop.Size = new System.Drawing.Size(253, 22);
             this.nop.TabIndex = 61;
             // 
             // nmp
             // 
-            this.nmp.Location = new System.Drawing.Point(437, 353);
+            this.nmp.Location = new System.Drawing.Point(382, 347);
             this.nmp.Name = "nmp";
-            this.nmp.Size = new System.Drawing.Size(216, 22);
+            this.nmp.Size = new System.Drawing.Size(253, 22);
             this.nmp.TabIndex = 59;
             // 
             // idp
             // 
-            this.idp.Location = new System.Drawing.Point(437, 307);
+            this.idp.Location = new System.Drawing.Point(382, 301);
             this.idp.Name = "idp";
-            this.idp.Size = new System.Drawing.Size(216, 22);
+            this.idp.Size = new System.Drawing.Size(253, 22);
             this.idp.TabIndex = 58;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(281, 435);
+            this.label4.Location = new System.Drawing.Point(226, 429);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 16);
             this.label4.TabIndex = 57;
@@ -293,7 +295,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(281, 397);
+            this.label3.Location = new System.Drawing.Point(226, 391);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 16);
             this.label3.TabIndex = 56;
@@ -302,7 +304,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(281, 353);
+            this.label5.Location = new System.Drawing.Point(226, 347);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 16);
             this.label5.TabIndex = 55;
@@ -311,7 +313,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(281, 310);
+            this.label6.Location = new System.Drawing.Point(226, 304);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 16);
             this.label6.TabIndex = 54;
@@ -319,7 +321,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(797, 97);
+            this.btnOpen.Location = new System.Drawing.Point(803, 396);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(89, 29);
             this.btnOpen.TabIndex = 53;
@@ -331,11 +333,11 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(284, 97);
+            this.dataGridView1.Location = new System.Drawing.Point(226, 97);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(488, 189);
+            this.dataGridView1.Size = new System.Drawing.Size(696, 189);
             this.dataGridView1.TabIndex = 52;
             // 
             // cbxjk
@@ -344,18 +346,40 @@
             this.cbxjk.Items.AddRange(new object[] {
             "P",
             "L"});
-            this.cbxjk.Location = new System.Drawing.Point(437, 394);
+            this.cbxjk.Location = new System.Drawing.Point(382, 388);
             this.cbxjk.Name = "cbxjk";
-            this.cbxjk.Size = new System.Drawing.Size(216, 24);
+            this.cbxjk.Size = new System.Drawing.Size(253, 24);
             this.cbxjk.TabIndex = 65;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(437, 489);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(89, 29);
+            this.btnUpdate.TabIndex = 85;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(546, 489);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(89, 29);
+            this.btnSearch.TabIndex = 84;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // Kurir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 599);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cbxjk);
-            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.nop);
@@ -395,7 +419,7 @@
         private System.Windows.Forms.Button btnPetani;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox nop;
@@ -408,5 +432,7 @@
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox cbxjk;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
